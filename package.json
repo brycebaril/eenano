@@ -1,6 +1,6 @@
 {
   "name": "eenano",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "A tiny pessimistic event emitter. Optimized for no listeners.",
   "main": "eenano.js",
   "directories": {
@@ -18,7 +18,7 @@
   "devDependencies": {
     "tape": "~2.14.0"
   },
-  "dependencies": { },
+  "dependencies": {},
   "repository": {
     "type": "git",
     "url": "git@github.com:brycebaril/eenano.git"
