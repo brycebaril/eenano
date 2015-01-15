@@ -5,7 +5,7 @@ eenano
 
 It's an EventEmitter! Like the one provided by core, but it does a **whole lot less!!** And it should be faster when there is nothing to do.
 
-This EventEmitter is optimized for no listeners on an event. It should be plenty fast if there are listeners, of course...
+This EventEmitter is optimized for no listeners on any event. It should be plenty fast if there are listeners, of course...
 
 It doesn't do most of what the core EventEmitter library does. If you need features, just use core.
 
@@ -14,7 +14,12 @@ A list of things this doesn't do:
   * `once`
   * Special case the `error` event
   * domains
+  * polymorphic event handlers
   * and more! (less?)
+
+A list of what it does the core library doesn't:
+  * Optimized for no listeners at all
+  * Allows you to specify a `this` with `.on` to avoid `Function#bind`
 
 ```javascript
 
@@ -37,10 +42,10 @@ API
 
 Create an event emitter instance.
 
-`.on(event, handler)`
+`.on(event, handler[, thisArg])`
 ---
 
-On `event` synchronously call `handler()`
+On `event` synchronously call `handler()` if provided, call `handler` with `this` set to `thisArg`
 
 `.emit(event, message)`
 ---
