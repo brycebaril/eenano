@@ -9,13 +9,16 @@ EENano.prototype.emit = function noop() {}
 
 function emit(event, metadata) {
   var handlers = this._listeners[event]
+  var returnVal
   if (handlers != null) {
     for (var i = 0; i < handlers.length; i++) {
       var fn = handlers[i].handler
       var thisArg = handlers[i].thisArg || this
+      returnVal = true
       fn.call(thisArg, metadata)
     }
   }
+  return returnVal
 }
 EENano.prototype.on = function (event, handler, thisArg) {
   if (!this.hasListeners) {

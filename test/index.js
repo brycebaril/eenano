@@ -35,6 +35,16 @@ test("multi", function (t) {
   e.emit("foo", "abc")
 })
 
+test("retVal", function (t) {
+  t.plan(3)
+  var e = EE()
+  e.on("foo", function (md) {
+    t.equals(md, "abc")
+  })
+  t.ok(e.emit("foo", "abc"))
+  t.notOk(e.emit("bar", "HI"))
+})
+
 test("thisArg", function (t) {
   t.plan(9)
   var e = EE()
